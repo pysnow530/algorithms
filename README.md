@@ -1,3 +1,1 @@
-## algorithms
-
-This is my algorithm note.
+算法笔记
