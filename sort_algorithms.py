@@ -87,8 +87,30 @@ def quick_sort(lst):
         return quick_sort([x for x in lst[1:] if x < lst[0]]) + [lst[0]] + quick_sort([x for x in lst[1:] if x > lst[0]])
 
 
+def merge_sort(lst1, lst2):
+    """归并排序
+算法复杂度：Nlog2N"""
+    new_lst= []
+    i = 0
+    j = 0
+
+    while i < len(lst1) and j < len(lst2):
+        if lst1[i] <= lst2[j]:
+            new_lst.append(lst1[i])
+            i += 1
+        else:
+            new_lst.append(lst2[j])
+            j += 1
+
+    new_lst.extend(lst1[i:])
+    new_lst.extend(lst2[j:])
+
+    return new_lst
+
+
 # straight_insertion_sort(range(10)[::-1])
 # shell_sort(range(10)[::-1])
 # simple_selection_sort(range(10)[::-1])
 # bubble_sort(range(10)[::-1])
-print quick_sort(range(10)[::-1])
+# print quick_sort(range(10)[::-1])
+print merge_sort(range(5, 10), range(1, 5))
