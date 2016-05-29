@@ -7,15 +7,18 @@ def straight_insertion_sort(lst):
     """直接插入排序
 思想：将N个元素以此插入前N-1个已排好序的列表。
 时间复杂度：N^2"""
+    def get_pos(lst, itm):
+        """查找元素itm在有序列表lst内的位置"""
+        for i in range(len(lst)):
+            if itm <= lst[i]:
+                return i
+        else:
+            return len(lst)
+
     for i in range(1, len(lst)):
-        if lst[i] < lst[i - 1]:
-            itm = lst[i]
-            j = i - 1
-            while j >= 0 and itm < lst[j]:
-                lst[j + 1] = lst[j]
-                j -= 1
-            lst[j + 1] = itm
-        print lst[:i+1], '|', lst[i+1:]
+        pos = get_pos(lst[:i], lst[i])
+        lst[pos+1:i+1], lst[pos] = lst[pos:i], lst[i]
+        print i, lst
 
     return lst
 
